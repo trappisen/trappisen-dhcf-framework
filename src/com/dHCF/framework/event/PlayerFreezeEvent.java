@@ -1,0 +1,43 @@
+package com.dHCF.framework.event;
+
+
+import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
+import org.bukkit.event.HandlerList;
+import org.bukkit.event.player.PlayerEvent;
+
+public class PlayerFreezeEvent
+        extends PlayerEvent
+        implements Cancellable
+{
+    public static HandlerList getHandlerList() { return handlers; }
+
+
+
+    private static final HandlerList handlers = new HandlerList();
+
+    private final boolean frozen;
+
+    private boolean cancelled;
+
+    public PlayerFreezeEvent(Player player, boolean frozen) {
+        super(player);
+        this.frozen = frozen;
+    }
+
+
+    public boolean isFrozen() { return this.frozen; }
+
+
+
+    public boolean isCancelled() { return this.cancelled; }
+
+
+
+    public void setCancelled(boolean cancelled) { this.cancelled = cancelled; }
+
+
+
+    public HandlerList getHandlers() { return handlers; }
+}
+
